@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CADASTRAR ITENS</title>
+</head>
+{% include 'rodd.html' %} 
+<form name="Meuform" onsubmit="return validateForm()" method="post"  >
+   {% csrf_token %}
+   <br></br>
+    Nome do produto: <input id="nun2" name="nomepro" size="30"/>
+	<br></br>
+	Quantidade de itens: <input id="nun2" name="quantidade" size="30"/>
+	<br></br>
+	Preço: <input id="nun2" name="preco" size="30"/>
+	<br></br>
+	Nota fiscal: <input id="nun2" name="nfval" size="30"/>
+	<br></br>
+	<input type="submit" value="Verificar" class="btn" width="103" height="42" />
+</form>
+   
+ {% if reto %}
+     <br></br>
+     <td> {{ reto }} </td>
+ {% endif %}
+
+
+
+</body>
+</html>

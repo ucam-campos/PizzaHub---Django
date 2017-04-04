@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MOSTRAR ITENS</title>
+</head>
+
+ {% include 'rodd.html' %} 
+ <br></br>
+ {% if lista_itens %}
+    {% for itens in lista_itens %}
+           <tr>
+               <td> {{itens.nome}} </td>
+               <td> {{itens.quantidade}} </td>
+               <td> {{itens.preco}} </td>
+			   <td> <a href="/apagar/?iten_id={{itens.id}}">Deletar</a> </td>
+			   <br></br>
+           </tr>
+    {% endfor %}
+  {% else %}
+    <td>Nem um valor aqui.</td>
+  {% endif %}
+
+
+</body>
+</html>

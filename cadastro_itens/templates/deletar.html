@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Apagar Iten</title>
+</head>
+<body>
+    {% include 'rodd.html' %} 
+    <h1>Deletar iten ?</h1>
+          <td> {{itens.nome}} </td>
+          <td> {{itens.quantidade}} </td>
+          <td> {{itens.preco}} </td>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Apagar" class="btn" width="103" height="42" />
+    </form>
+	{% if reto %}
+	    <script>
+          alert('{{ reto }}');
+		  window.location.assign('/mostrar/');
+        </script>
+	{% endif %}
+</body>
+</html>

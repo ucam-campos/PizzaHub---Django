@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block calcmenui %}
+
+   <div id="panel">
+      {% csrf_token %}
+      <H3><div style="margin-top:20px;color:white;" color="red" >Numero 1:</div></H3>     <div style="margin-top:20px;"><input id="nun1" name="fnome" size="30"/></div>
+      <H3><div style="margin-top:20px;color:white;" color="red" >Numero 2:</div></H3>     <div style="margin-top:20px;"><input id="nun2" name="lnome" size="30"/></div>
+      <br></br>
+      <select name="loperato" >
+        <option value="" disabled selected>Selecione o operador</option>
+        <option value="0">Somar</option>
+        <option value="1">Subtrair</option>
+        <option value="2">Multiplicar</option>
+        <option value="3">Dividir</option>
+      </select>
+      <br></br>
+	  <input type="submit" value="Verificar" class="btn" width="103" height="42" />
+	  <br></br>
+	  <div  style="color:red;">{{ titu }}</div>
+   </div>
+
+{% endblock %}
+
