@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from models import CadastroMateriais
-
+from django import forms
 
 def Cadastar(request):
     if request.method == 'POST':
@@ -48,6 +48,37 @@ def MostarValores(request):
 
     return render(request, 'mostrar.html', {'lista_itens': lista_itens})
 
+#Seixas - commit
+#TODO - inserir em outro App? separar Estoque(onde teremos cadastro) da Entrega(onte temos pedidos, clientes, etc)?
+class ClienteForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
 
+def cadastrar_cliente(request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render_to_response('cadastroconfirmado.html', form.cleaned_data)    
+    else:
+        form = ClienteForm()                    
+    vars = {'form':form}
+    return render_to_response('cadastro.html', vars)
 
-			
+def listar_pizza(request):
+    pizzas = Pizza.objects.all()
+    vars = {'pizzas':pizzas}
+    return render_to_response('pizzas.html', vars)
+    
+def ver_pedido(request):
+    msg = pedido = None
+    idPedido = request.GET.get('id_pedido')
+    if idPedido:
+        try:
+            pedido = Pedido.objects.get(id=idPedido)
+        except Pedido.DoesNotExist:
+            msg = u'Não existe pedido #%s' % idPedido
+    vars = {'pedido':pedido, 'msg':msg}
+    return render_to_response('pedido.html', vars)
+
+#Seixas - end commit
